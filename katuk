@@ -1,3 +1,5 @@
-#!/bin/bash
-path=$(/mnt/c/Users/katuk812/Code/rust/katuk/target/debug/katuk "$@")
-cd $path
+#!/usr/bin/env fish
+function katuk 
+	set path (/mnt/c/Users/katuk812/Code/rust/katuk/target/debug/katuk $argv)
+	cd $path
+end
