@@ -1,11 +1,12 @@
 # Katuk 
 
-# Directory Bookmarking CLI written in rust 
+## Directory Bookmarking CLI written in rust 
 
-## Usage
+### Usage
 
 ```bash
 -n <name> # new bookmark for current directory 
 -n <name> <path>  # new bookmark for path 
 -p <name> # get the path 
+-d <name> # delete the path
 ```

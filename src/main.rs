@@ -1,11 +1,11 @@
-use std::{process, error::Error};
+use katuk::display;
 
 fn main() {
     match katuk::run() { 
         Err(err) => { 
-            katuk::print_err(err); 
+            display::print_err(err); 
         }
         Ok(()) => ()
     }
+    
 }
-

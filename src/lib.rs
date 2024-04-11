@@ -1,82 +1,72 @@
-use std::{collections::{self, BTreeMap}, env, fs::{self, File}, io::{self, BufReader}, process, error::Error};
+pub mod dao; 
+pub mod display;
+pub mod bookmark;
 
-pub mod add; 
-use add::Add;
+use std::{env, error::Error};
+use dao::Dao;
 
-type Map<K, V> = BTreeMap<K, V>;
 
 pub fn run() -> Result<(), Box<dyn Error>> { 
     let args: Vec<String> = env::args().collect(); 
 
 
     if args.len() < 2 { 
-        return Err(format!("Invalid Arguments").into());
+        return Err(format!("Invalid arguments").into());
     }
     else { 
+        let mut dao: Dao = Dao::new();
         match args[1].as_str() { 
-            "-n" => { 
-                // TODO: add bookmark
-                println!("add bookmark");
+            "-a" => { 
+                let name = match args.get(2) { 
+                    Some(name) => name, 
+                    None => return Err(format!("Invalid arguments").into()) 
+                };
+
+                let current_dir = env::current_dir().unwrap().to_str().unwrap().to_string();
+                let path = match args.get(3) { 
+                    Some(path) => path, 
+                    None => { 
+                        &current_dir
+                    }
+                };
+                match dao.add_bookmark(name, path) { 
+                    Ok(()) => { 
+                        println!("add");
+                        display::print_ok(&format!("add bookmark {} -> {}", name, path));
+                        dao.write(); 
+                    },
+                    Err(err) => { 
+                        display::print_err(err);
+                    }
+                }
             }, 
             "-p" => { 
                 // get path
                 let name = match args.get(2) { 
                     Some(name) => name, 
-                    None => return Err(format!("Invalid Arguments!").into()) 
+                    None => return Err(format!("Invalid arguments").into()) 
                 };
-                let mut map = Map::new();
-                match get_path(name, &mut map) { 
+
+                match dao.get_path(&name) { 
                     Ok(path) => { 
+                        println!("cd"); 
                         println!("{}", path); 
                     }
                     Err(err) => { 
                         return Err(err);
                     }
                 }
+            }, 
+            "-l" => { 
+                println!("ls");
+                let _ = dao.list_bookmark(); 
             }
             _ => { 
                 return Err(format!("Invalid Arguments!").into()); 
             }
-
         }
     }
-
-    return Ok(()); 
-
-    // let add = match Add::new(args) { 
-    //     Ok(add) => add, 
-    //     Err(err) => print_err(err) 
-    // };
-   
-
     Ok(())
 }
 
-fn read_data(map: &mut Map<String, String>) -> () { 
-    let data = match fs::read_to_string("/mnt/c/Users/katuk812/Code/rust/katuk/data.txt") { 
-        Ok(data) => data,
-        Err(err) => print_err(Box::new(err))
-    };
-    let data: Vec<&str> = data.lines().collect(); 
-    for line in data { 
-        let word: Vec<&str> = line.split_whitespace().collect();
-        map.insert(word[0].to_string(), word[1].to_string());
-    }
-}
 
-fn get_path(name: &str, map: &mut Map<String, String>) -> Result<String, Box<dyn Error>> { 
-    read_data(map); 
-    match map.get(name) { 
-        Some(path) => { 
-            return Ok(path.to_string()) 
-        },
-        None => {
-            return Err(format!("Bookmarks doesn't exists").into())
-        }
-    };
-}
-
-pub fn print_err(err: Box<dyn Error>) -> ! { 
-    println!("Failed: {}", err); 
-    process::exit(1);
-}

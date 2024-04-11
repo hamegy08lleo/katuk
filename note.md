@@ -5,7 +5,7 @@
 ## Usage
 
 ```bash
--n <name> # new bookmark for current directory 
--n <name> <path>  # new bookmark for path 
+-a <name> # new bookmark for current directory 
+-a <name> <path>  # new bookmark for path 
 -p <name> # get the path 
 ```

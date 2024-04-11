@@ -1,2 +1,5 @@
+cc /mnt/c/Users/katuk812/Code/rust/katuk
 cp /mnt/c/Users/katuk812/Code/CP/
-katuk /mnt/c/Users/katuk812/Code/rust/katuk/
+home /home/hvmegy
+katuk /home/hvmegy
+wo /mnt/c/Users/katuk812/Code/rust/katuk

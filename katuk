@@ -1,5 +1,26 @@
 #!/usr/bin/env fish
 function katuk 
-	set path (/mnt/c/Users/katuk812/Code/rust/katuk/target/debug/katuk $argv)
-	cd $path
+	set signal (/mnt/c/Users/katuk812/Code/rust/katuk/target/debug/katuk $argv)
+	set type $signal[1]
+	set output $signal[2..-1] 
+
+
+	switch $type
+		case 'cd' 
+			cd $output
+			echo "Changed directory to $output"
+		case 'add' 
+			for line in $output 
+				echo $line
+			end
+		case 'err' 
+			for line in $output 
+				echo $line
+			end
+		case 'ls' 
+			for line in $output 
+				echo $line
+			end
+	end
+
 end
