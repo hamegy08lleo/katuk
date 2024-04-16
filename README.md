@@ -31,9 +31,10 @@ source /path/to/this/repo/katuk
 ## Usage
 
 ```bash
--n <name> # new bookmark for current directory 
--n <name> <path>  # new bookmark for path 
--p <name> # get the path 
--d <name> # delete the path
+-a <name> # new bookmark for current directory 
+-a <name> <path>  # new bookmark for path 
+-p <name> # go to the path 
+-d <name> # delete the bookmark
+-e <name> <path> edit the bookmark
 -l # list all the bookmarks
 ```
