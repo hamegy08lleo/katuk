@@ -1,7 +1,7 @@
-use katuk::display;
+use katuk_rs::display;
 
 fn main() {
-    match katuk::run() { 
+    match katuk_rs::run() { 
         Err(err) => { 
             display::print_err(err); 
         }

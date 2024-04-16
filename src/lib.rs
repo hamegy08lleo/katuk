@@ -17,6 +17,9 @@ pub fn run() -> Result<(), Box<dyn Error>> {
     else { 
         let mut dao: Dao = Dao::new();
         match args[1].as_str() { 
+            "-h" => { 
+
+            }, 
             "-a" => { 
                 let name = match args.get(2) { 
                     Some(name) => name, 
@@ -46,7 +49,7 @@ pub fn run() -> Result<(), Box<dyn Error>> {
                 match dao.add_bookmark(name, path) { 
                     Ok(()) => { 
                         println!("add");
-                        display::print_ok(&format!("add bookmark {} -> {}", name, path));
+                        display::print_ok(&format!("added bookmark {} -> {}", name, path));
                         dao.write(); 
                     },
                     Err(err) => { 
@@ -104,16 +107,32 @@ pub fn run() -> Result<(), Box<dyn Error>> {
                 match dao.edit_bookmark(name, path) { 
                     Ok(()) => { 
                         println!("edit");
-                        display::print_ok(&format!("edit bookmark {} -> {}", name, path));
+                        display::print_ok(&format!("edited bookmark {} -> {}", name, path));
                         dao.write(); 
                     },
                     Err(err) => { 
                         display::print_err(err);
                     }
                 }
-            }
+            }, 
+            "-d" => { 
+                let name = match args.get(2) { 
+                    Some(name) => name, 
+                    None => return Err(format!("Invalid arguments").into())
+                };
+                match dao.remove_bookmark(name) { 
+                    Ok(()) => { 
+                        println!("remove"); 
+                        display::print_ok(&format!("removed bookmark {}", name));
+                        dao.write(); 
+                    }
+                    Err(err) => { 
+                        display::print_err(err); 
+                    }
+                }
+            }, 
             _ => { 
-                return Err(format!("Invalid Arguments!").into()); 
+                return Err(format!("Invalid arguments!").into()); 
             }
         }
     }

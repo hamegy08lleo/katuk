@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 function katuk 
-	set signal (/mnt/c/Users/katuk812/Code/rust/katuk/target/debug/katuk $argv)
+	set signal (katuk_rs $argv)
 	set type $signal[1]
 	set output $signal[2..-1] 
 
@@ -25,6 +25,10 @@ function katuk
 			for line in $output 
 				echo $line 
 			end
+		case 'remove' 
+			for line in $output 
+				echo $line 
+			end 
 	end
 
 end
