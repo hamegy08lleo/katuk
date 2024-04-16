@@ -1,5 +1,9 @@
+Code /mnt/c/Users/katuk812/Code
 cc /mnt/c/Users/katuk812/Code/rust/katuk
 cp /mnt/c/Users/katuk812/Code/CP/
 home /home/hvmegy
-katuk /home/hvmegy
+katuk /mnt/c/Users/katuk812/Code/rust/katuk
+python /mnt/c/Users/katuk812/Code/python
+quang /mnt/c/Users/katuk812/Code/python
+rust /mnt/c/Users/katuk812/Code/rust
 wo /mnt/c/Users/katuk812/Code/rust/katuk

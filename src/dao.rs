@@ -46,6 +46,18 @@ impl Dao {
         }
     }
 
+    pub fn edit_bookmark(&mut self, name: &str, path: &str) -> Result<(), Box<dyn Error>> { 
+        match self.map.get(name) { 
+            Some(..) => { 
+                self.map.insert(name.to_string(), path.to_string()); 
+                Ok(())
+            }
+            None => { 
+                Err(format!("Bookmarks does not exists").into())
+            }
+        }
+    }
+
     pub fn list_bookmark(& self) -> Result<(), Box<dyn Error>> { 
         for (key, value) in &self.map { 
             display::print_bookmark(Bookmark { name: key.clone(), path: value.clone() } );

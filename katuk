@@ -21,6 +21,10 @@ function katuk
 			for line in $output 
 				echo $line
 			end
+		case 'edit' 
+			for line in $output 
+				echo $line 
+			end
 	end
 
 end
