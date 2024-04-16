@@ -1,10 +1,10 @@
 <h1 align="center"> ✨ Katuk ✨ </h1>
 
 ## Index 
-- [Index](#-Index)
-- [Introduction](#-Introduction)
-- [Installation](#-Installation)
-- [Usage](#-Installation)
+- [Index](#-index)
+- [Introduction](#-introduction)
+- [Installation](#-installation)
+- [Usage](#-usage)
 
 ## Introduction 
 
