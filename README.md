@@ -10,7 +10,11 @@ Directory Bookmarking CLI written in rust
 
 1. clone this repository 
 2. cd to the repository 
-3. copy target/release/katuk_rs to your PATH
+3. build the code with this command
+```
+cargo build --release --bin katuk_rs
+```
+3. copy target/release/katuk_rs to your PATH (e.g., usr/bin/)
 4. write this command to the end of your fish config file (~/.config/config.fish) 
 ```bash 
 source /path/to/this/repo/katuk
