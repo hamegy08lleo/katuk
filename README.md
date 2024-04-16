@@ -6,7 +6,14 @@ Directory Bookmarking CLI written in rust
 
 ## Installation 
 
-### for Fish 
+### Prerequisites 
+
+- cargo 
+- rustc
+
+You can install it from [here](https://www.rust-lang.org)
+
+### For Fish 
 
 1. clone this repository 
 2. cd to the repository 
