@@ -21,12 +21,12 @@ You can install it from [here](https://www.rust-lang.org)
 ```
 cargo build --release --bin katuk_rs
 ```
-3. copy target/release/katuk_rs to your PATH (e.g., usr/bin/)
-4. write this command to the end of your fish config file (~/.config/config.fish) 
+4. copy target/release/katuk_rs to your PATH (e.g., usr/bin/)
+5. write this command to the end of your fish config file (~/.config/config.fish) 
 ```bash 
 source /path/to/this/repo/katuk
 ```
-5. enjoy :D
+6. enjoy :D
 
 ## Usage
 
